@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SampleDataController.cs</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "Controllers\\SampleDataController.cs";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>SampleDataController.cs</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="csharp"><span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> System.Linq;
+<span class="hljs-keyword">using</span> System.Threading.Tasks;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.Mvc;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">ACAE.Controllers</span>
+{
+    [<span class="hljs-meta">Route(<span class="hljs-meta-string">"api/[controller]"</span>)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SampleDataController</span> : <span class="hljs-title">Controller</span>
+    {
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span>[] Summaries = <span class="hljs-keyword">new</span>[]
+        {
+            <span class="hljs-string">"Freezing"</span>, <span class="hljs-string">"Bracing"</span>, <span class="hljs-string">"Chilly"</span>, <span class="hljs-string">"Cool"</span>, <span class="hljs-string">"Mild"</span>, <span class="hljs-string">"Warm"</span>, <span class="hljs-string">"Balmy"</span>, <span class="hljs-string">"Hot"</span>, <span class="hljs-string">"Sweltering"</span>, <span class="hljs-string">"Scorching"</span>
+        };
+
+        [<span class="hljs-meta">HttpGet(<span class="hljs-meta-string">"[action]"</span>)</span>]
+        <span class="hljs-function"><span class="hljs-keyword">public</span> IEnumerable&lt;WeatherForecast&gt; <span class="hljs-title">WeatherForecasts</span>(<span class="hljs-params"></span>)
+        </span>{
+            <span class="hljs-keyword">var</span> rng = <span class="hljs-keyword">new</span> Random();
+            <span class="hljs-keyword">return</span> Enumerable.Range(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>).Select(index =&gt; <span class="hljs-keyword">new</span> WeatherForecast
+            {
+                DateFormatted = DateTime.Now.AddDays(index).ToString(<span class="hljs-string">"d"</span>),
+                TemperatureC = rng.Next(<span class="hljs-number">-20</span>, <span class="hljs-number">55</span>),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            });
+        }
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">WeatherForecast</span>
+        {
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> DateFormatted { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> TemperatureC { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Summary { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> TemperatureF
+            {
+                <span class="hljs-keyword">get</span>
+                {
+                    <span class="hljs-keyword">return</span> <span class="hljs-number">32</span> + (<span class="hljs-keyword">int</span>)(TemperatureC / <span class="hljs-number">0.5556</span>);
+                }
+            }
+        }
+    }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

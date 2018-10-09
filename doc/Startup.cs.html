@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Startup.cs</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "Startup.cs";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>Startup.cs</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="csharp"><span class="hljs-keyword">using</span> Microsoft.AspNetCore.Builder;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.Hosting;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.HttpsPolicy;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.Mvc;
+<span class="hljs-keyword">using</span> Microsoft.AspNetCore.SpaServices.AngularCli;
+<span class="hljs-keyword">using</span> Microsoft.Extensions.Configuration;
+<span class="hljs-keyword">using</span> Microsoft.Extensions.DependencyInjection;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">ACAE</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Startup</span>
+    {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Startup</span>(<span class="hljs-params">IConfiguration configuration</span>)
+        </span>{
+            Configuration = configuration;
+        }
+
+        <span class="hljs-keyword">public</span> IConfiguration Configuration { <span class="hljs-keyword">get</span>; }
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>This method gets called by the runtime. Use this method to add services to the container.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="csharp">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ConfigureServices</span>(<span class="hljs-params">IServiceCollection services</span>)
+        </span>{
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>In production, the Angular files will be served from this directory</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="csharp">            services.AddSpaStaticFiles(configuration =&gt;
+            {
+                configuration.RootPath = <span class="hljs-string">"ClientApp/dist"</span>;
+            });
+        }
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>This method gets called by the runtime. Use this method to configure the HTTP request pipeline.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="csharp">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Configure</span>(<span class="hljs-params">IApplicationBuilder app, IHostingEnvironment env</span>)
+        </span>{
+            <span class="hljs-keyword">if</span> (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                app.UseExceptionHandler(<span class="hljs-string">"/Error"</span>);
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseMvc(routes =&gt;
+            {
+                routes.MapRoute(
+                    name: <span class="hljs-string">"default"</span>,
+                    template: <span class="hljs-string">"{controller}/{action=Index}/{id?}"</span>);
+            });
+
+            app.UseSpa(spa =&gt;
+            {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>To learn more about options for serving an Angular SPA from ASP.NET Core,
+see https://go.microsoft.com/fwlink/?linkid=864501</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="csharp">
+                spa.Options.SourcePath = <span class="hljs-string">"ClientApp"</span>;
+
+                <span class="hljs-keyword">if</span> (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: <span class="hljs-string">"start"</span>);
+                }
+            });
+        }
+    }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
